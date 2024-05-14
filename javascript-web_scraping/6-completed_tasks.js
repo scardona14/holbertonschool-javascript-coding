@@ -9,7 +9,7 @@ request(url, function (error, response, body) {
     for (const task of tasks) {
       if (task.completed === true) {
         if (dict[task.userId] === undefined) {
-          dict[task.userId] = 1;
+          dict[task.userId] = 0;
         } else {
           dict[task.userId]++;
         }
