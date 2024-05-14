@@ -3,18 +3,19 @@ const argv = process.argv;
 const url = argv[2];
 const request = require('request');
 request(url, function (error, response, body) {
-  if (error === null) {
-    const tasks = JSON.parse(body);
+  if (error) {
+    console.log(error);
+  } else {
+    const rbody = JSON.parse(body);
     const dict = {};
-    for (const task of tasks) {
-      if (task.completed === true) {
-        if (dict[task.userId] === undefined) {
-          dict[task.userId] = 0;
-        } else {
-          dict[task.userId]++;
+    for (const i of rbody) {
+      if (i.completed === true) {
+        if (dict[i.userId] === undefined) {
+          dict[i.userId] = 0;
         }
+        dict[i.userId] += 1;
       }
-      console.log(dict);
     }
+    console.log(dict);
   }
 });
