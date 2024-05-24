@@ -21,7 +21,7 @@ const app = http.createServer(async (req, res) => {
       const students = await countStudents(DATABASE);
       res.end(`${students.join('\n')}`);
     } catch (error) {
-      res.end(`${error.message}`);
+      res.end(error.message);
     }
   }
   res.statusCode = 404;
