@@ -1,5 +1,5 @@
 class AppController {
-  static getHome(req, res) {
+  static getHomepage(request, response) {
     res.send(200, 'Hello Holberton School!');
   }
 }
